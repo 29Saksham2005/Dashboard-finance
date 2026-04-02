@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.routes import health, test_db
+from app.api.routes import health, test_db, schema_test
 from app.core.database import Base, engine
 
 #Import models so SQLAlchemy registers them
@@ -15,6 +15,7 @@ app = FastAPI(
 )
 app.include_router(health.router)
 app.include_router(test_db.router)
+app.include_router(schema_test.router)
 
 @app.get("/",tags=["Root"])
 def root():
