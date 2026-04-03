@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.routes import health, test_db, schema_test, auth
+from app.api.routes import health, test_db, schema_test, auth, users
 from app.core.database import Base, engine
 
 #Import models so SQLAlchemy registers them
@@ -17,6 +17,7 @@ app.include_router(health.router)
 app.include_router(test_db.router)
 app.include_router(schema_test.router)
 app.include_router(auth.router)
+app.include_router(users.router)
 
 @app.get("/",tags=["Root"])
 def root():
