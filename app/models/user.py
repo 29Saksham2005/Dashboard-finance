@@ -12,7 +12,7 @@ class User(Base):
     email = Column(String,unique=True,nullable=False,index=True)
     password_hash = Column(String,nullable=False)
     role = Column(Enum(UserRole),nullable=False,default=UserRole.VIEWER)
-
+    is_active =Column(Boolean, default=True)
     created_at= Column(DateTime(timezone=True), server_default=func.now())
     updated_at= Column(DateTime(timezone=True),server_default=func.now(),onupdate=func.now())
 
